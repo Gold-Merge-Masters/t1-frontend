@@ -1,0 +1,8 @@
+.ant-upload-drag-icon span {
+    font-size: 128px !important;
+}
+
+nz-upload {
+    display: block;
+    max-height: 325px;
+}
