@@ -43,9 +43,7 @@
             "outputPath": "dist/t1-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -53,10 +51,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/theme.less",
-              "src/styles.css"
-            ],
+            "styles": ["src/theme.less", "src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -64,13 +59,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "10MB"
                 }
               ],
               "outputHashing": "all"

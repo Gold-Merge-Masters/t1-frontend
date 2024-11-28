@@ -6,10 +6,7 @@ import { Layout } from './layout/layout.component';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, Layout],
-  template: `
-    <layout/>
-  `,
-  styleUrl: './app.component.css',
+  template: ` <layout /> `,
 })
 export class AppComponent {
   title = 't1-frontend';

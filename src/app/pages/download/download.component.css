@@ -1,0 +1,22 @@
+.ant-upload-drag-icon span {
+    font-size: 128px !important;
+}
+
+nz-upload {
+    display: block;
+    max-height: 325px;
+}
+
+.title__accent {
+    color: #1677FF;
+}
+
+.button__next {
+    margin-top: 5%;
+    align-self: flex-end;
+}
+
+.upload {
+    display: flex;
+    flex-direction: column;
+}

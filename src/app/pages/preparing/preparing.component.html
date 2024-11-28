@@ -1,0 +1,6 @@
+<div class="preparing">
+    <nz-progress [nzPercent]="progress" nzType="circle" [nzStatus]="status" [nzWidth]="200"></nz-progress>
+    <button nz-button nzType="primary" [disabled]="!(progress == 1)" routerLink="/gold" class="button__next">
+        Продолжить
+    </button>
+</div>

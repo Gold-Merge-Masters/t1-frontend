@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "private": true,
   "dependencies": {
@@ -18,7 +19,9 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "ng-zorro-antd": "^18.2.1",
+    "papaparse": "^5.4.1",
     "rxjs": "~7.8.0",
+    "string-similarity": "^4.0.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
@@ -26,6 +29,9 @@
     "@angular-devkit/build-angular": "^18.2.5",
     "@angular/cli": "^18.2.5",
     "@angular/compiler-cli": "^18.2.0",
+    "@types/papaparse": "^5.3.15",
+    "@types/string-similarity": "^4.0.2",
+    "prettier": "^3.4.1",
     "typescript": "~5.5.2"
   }
 }

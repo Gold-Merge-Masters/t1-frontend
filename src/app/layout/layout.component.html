@@ -1,39 +1,68 @@
-<nz-layout class="content">
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item>
-        <span nz-icon nzType="home" nzTheme="outline"></span>
-        <span>Главная</span>
-      </li>
-      <li nz-submenu nzTitle="Выбор" nzIcon="tool">
-        <ul>
-          <li nz-menu-item>
-            <label nz-checkbox class="mode">Автоматически</label>
-          </li>
-
-          <li nz-menu-item>
-            <label nz-checkbox class="mode">Вручную</label>
-          </li>
-        </ul>
-      </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="file"></span>
-        <span>File</span>
-      </li>
-    </ul>
-  </nz-sider>
-  <nz-layout>
-    <nz-content>
-      <h2 nz-typography class="title">
-        <span class="title__wide">Узнайте наиболее вероятные данные</span>
-        <span class="title__wide"
-          >из <span class="title__accent">надежных источников</span></span
-        >
-      </h2>
-
-      <download />
-    </nz-content>
-    <nz-footer>Merge Masters Team</nz-footer>
+@if ({url: url$ | async} ; as data ) {
+  <nz-layout class="content">
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+      <div class="logo"></div>
+      <ul nz-menu nzTheme="dark" nzMode="inline">
+        <li nz-menu-item routerLink="/upload" [ngClass]="data.url !== '/gold' ? 'menu__home' : null">
+          <span nz-icon nzType="home" nzTheme="outline"></span>
+          <span>Главная</span>
+        </li>
+        <li nz-submenu nzTitle="Выбор" nzIcon="tool">
+          <ul>
+            <li nz-menu-item>
+              <label nz-checkbox class="mode">Автоматически</label>
+            </li>
+  
+            <li nz-menu-item>
+              <label nz-checkbox class="mode">Вручную</label>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-item routerLink="/gold" [ngClass]="data.url === '/gold' ? 'menu__home' : null">
+          <span nz-icon nzType="expand" nzTheme="outline"></span>
+          <span>Золотая запись</span>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <div nz-row>
+          <div nz-col nzSpan="24">
+            <h1 nz-typography class="title">
+              <span class="title__wide">Узнайте наиболее вероятные данные</span>
+              <span class="title__wide">из <span class="title__accent">надежных источников</span></span>
+            </h1>
+          </div>
+        </div>
+        @if (step < 3) {
+          <div nz-row class="stepper">
+            <div nz-col nzSpan="22" nzOffset="1">
+              <nz-steps [nzCurrent]="step">
+                <nz-step [nzTitle]="firstStepTemplate" nzDescription="Загрузка файла"></nz-step>
+                <nz-step nzTitle="Предпросмотр" nzDescription="Поиск подходящих данных"></nz-step>
+                <nz-step nzTitle="Отправка" nzDescription="Объединить с золотой записью"></nz-step>
+              </nz-steps>
+              <ng-template #firstStepTemplate>
+                @if (step === 0) {
+                  Ожидание
+                } @else {
+                  Успешно
+                }
+              </ng-template>
+            </div>
+          </div>
+        }
+        
+        <div nz-row>
+          <div nz-col nzSpan="22" nzOffset="1">
+            <router-outlet />
+          </div>
+        </div>
+      </nz-content>
+      <nz-footer>
+        <a href="https://github.com/Gold-Merge-Masters" target="_blank">Merge Masters Team</a> для T1
+      </nz-footer>
+    </nz-layout>
   </nz-layout>
-</nz-layout>
+}
+
