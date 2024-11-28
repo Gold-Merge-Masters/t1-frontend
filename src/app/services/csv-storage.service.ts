@@ -62,6 +62,18 @@ export class CsvStorageService {
     'source_cd',
   ];
 
+  private quoutes = [
+    'client_bday',
+    'client_inn',
+    'client_snils',
+    'addr_zip',
+    'addr_house',
+    'addr_flat',
+    'addr_str',
+    'create_date',
+    'update_date',
+  ];
+
   private quotedHeaders = this.headers.map((header) => `"${header}"`);
 
   private csvRows = [this.quotedHeaders.join(',')];
@@ -69,23 +81,27 @@ export class CsvStorageService {
   public getCsvFile() {
     const cleanedData = this.goldenRecords.filter((item) => !!item.client_fio_full);
 
+    this.csvRows.push('\n');
+
     cleanedData.forEach((item) => {
       const row = this.headers
         .map((field) => {
           let value = item[field] || '';
-          if (value.includes(',') || value.includes('"') || value.includes(' ')) {
-            value = `"${value.replace(/"/g, '""')}"`;
+          if (this.quoutes.includes(field) || !value) {
+            value = `"${value}"`;
           }
           return value;
         })
         .join(',');
       this.csvRows.push(row);
+      this.csvRows.push('\n');
     });
 
     const csvString = this.csvRows.join('\n');
     const blob = new Blob([csvString], { type: 'text/csv' });
     const file = new File([blob], 'data.csv', { type: 'text/csv' });
-
+    
     return file;
   }
 }
+
