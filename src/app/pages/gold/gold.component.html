@@ -1,0 +1,32 @@
+<div class="gold">
+  @if (data$ | async; as data) {
+    <nz-table
+      #fixedTable1
+      [nzTemplateMode]="true"
+      [nzScroll]="{ x: 'max-content', y: '70vh' }"
+      nzBordered="true"
+      style="table-layout: fixed"
+    >
+      <thead>
+        <tr>
+          <th nzLeft nzWidth="180px">clientFioFull</th>
+          <ng-container *ngFor="let column of columnOrder; let i = index">
+            <ng-container *ngIf="column !== 'clientFioFull'">
+              <th nzWidth="220px" nzBreakWord>{{ column }}</th>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let record of data">
+            <td nzLeft nzWidth="180px">{{ record.clientFioFull }}</td>
+            <ng-container *ngFor="let column of columnOrder; let i = index">
+              <ng-container *ngIf="column !== 'clientFioFull'">
+                <td nzWidth="220px" nzBreakWord>{{ record[column] || '&nbsp;' }}</td>
+              </ng-container>
+            </ng-container>
+          </tr>
+      </tbody>
+    </nz-table>
+  }
+</div>

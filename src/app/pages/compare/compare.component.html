@@ -1,0 +1,78 @@
+<div class="compare">
+    <div nz-row class="compare__tables">
+        <div nz-col nzSpan="12" class="table__wrapper">
+          <!-- Оригинальная таблица с дубликатами -->
+          <div *ngIf="csvStorage.originalData.length > 0">
+            <h3>Оригинальная таблица (с дубликатами):</h3>
+            <nz-table
+              #fixedTable1
+              [nzTemplateMode]="true"
+              [nzScroll]="{ x: 'max-content', y: '50vh' }"
+              nzBordered="true"
+              style="table-layout: fixed"
+            >
+              <thead>
+                <tr>
+                  <th nzLeft nzWidth="150px">client_fio_full</th>
+                  <ng-container *ngFor="let column of csvService.columnOrder; let i = index">
+                    <ng-container *ngIf="column !== 'client_fio_full'">
+                      <th nzWidth="220px">{{ column }}</th>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of csvStorage.originalData">
+                  <td nzLeft nzWidth="150px">{{ record.client_fio_full }}</td>
+                  <ng-container *ngFor="let column of csvService.columnOrder; let i = index">
+                    <ng-container *ngIf="column !== 'client_fio_full'">
+                      <td nzWidth="220px">{{ record[column] || '&nbsp;' }}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </nz-table>
+          </div>
+        </div>
+        <div nz-col nzSpan="12" class="table__wrapper">
+          <div *ngIf="csvStorage.goldenRecords.length > 0">
+            <h3>Золотые записи:</h3>
+            <nz-table
+              #fixedTable2
+              [nzTemplateMode]="true"
+              [nzScroll]="{ x: 'max-content', y: '50vh' }"
+              nzBordered="true"
+              style="table-layout: fixed"
+            >
+              <thead>
+                <tr>
+                  <th nzLeft nzWidth="150px">client_fio_full</th>
+                  <ng-container *ngFor="let column of csvService.columnOrder; let i = index">
+                    <ng-container *ngIf="column !== 'client_fio_full'">
+                      <th nzWidth="220px">{{ column }}</th>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let record of csvStorage.goldenRecords; let row = index">
+                  <tr [ngClass]="!record['source_cd'] ? 'row__empty' : null">
+                    <td nzLeft nzWidth="150px">{{ record.client_fio_full || csvStorage.originalData[row].client_fio_full}}</td>
+                    <ng-container *ngFor="let column of csvService.columnOrder; let i = index">
+                      <ng-container *ngIf="column !== 'client_fio_full'">
+                        <td nzWidth="220px">{{ record[column] || csvStorage.originalData[row][column] }}</td>
+                      </ng-container>
+                    </ng-container>
+                  </tr>
+                </ng-container>
+
+              </tbody>
+            </nz-table>
+          </div>
+        </div>
+      </div>
+      <button nz-button nzType="primary" routerLink="/preparing" class="button__next">
+        Продолжить
+      </button>
+</div>
+

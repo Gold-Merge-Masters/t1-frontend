@@ -1,0 +1,23 @@
+.DS_Store
+Thumbs.db
+.idea
+.awcache
+.vscode/
+*.env
+*.log
+*.sublime-project
+*.sublime-workspace
+*.pot
+*.less
+*@dasherize__*.spec.ts
+npm-debug.*
+lerna-debug.*
+yarn.lock
+dist/
+
+node_modules/
+bower_components/
+.awcache/
+package.json
+# .prettierignore
+package-lock.json

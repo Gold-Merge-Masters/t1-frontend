@@ -1,0 +1,11 @@
+.preparing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15% 0 0;
+}
+
+.button__next {
+    margin-top: 5%;
+    align-self: flex-end;
+}

@@ -1,0 +1,22 @@
+<div class="upload">
+  <nz-upload
+  nzType="drag"
+  [nzMultiple]="false"
+  [nzCustomRequest]="preventRequest"
+  (nzChange)="handleChange($event)"
+  [nzAccept]="'.csv'"
+  [nzLimit]="1"
+  [nzDisabled]="isDisabled"
+>
+  <p class="ant-upload-drag-icon">
+    <span nz-icon nzType="inbox" nzTheme="outline"></span>
+  </p>
+  <h2 class="ant-upload-text" nz-typography><span class="title__accent">Нажмите</span> или перенесите файл</h2>
+  <p class="ant-upload-hint">
+    Не забудьте выбрать правильный формат
+  </p>
+</nz-upload>
+<button nz-button nzType="primary" [disabled]="!file" routerLink="/compare" class="button__next">
+  Продолжить
+</button>
+</div>

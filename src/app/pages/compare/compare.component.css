@@ -1,0 +1,17 @@
+.button__next {
+    margin-top: 5%;
+    align-self: flex-end;
+}
+
+.compare {
+    display: flex;
+    flex-direction: column;
+}
+
+.table__wrapper {
+    height: 60vh;
+}
+
+.row__empty {
+    color: rgba(0, 0, 0, 0.3) !important;
+}
